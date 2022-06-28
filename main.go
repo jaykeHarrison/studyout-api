@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gofiber/fiber/v2"
+	"github.com/jaykeHarrison/studyout-api/database"
 	"log"
 )
 
@@ -9,10 +10,14 @@ import (
 func welcome(c *fiber.Ctx) error {
 	//c points to the fiber Context/Ctx struct
 	//Ctx struct holds the HTTP request and response
+
+	//sends a JSON string of "welcome" in the reponse.
 	return c.SendString("Welcome")
 }
 
 func main() {
+	//connect to database
+	database.ConnectDb()
 	//initialise a Fiber app
 	app := fiber.New()
 
