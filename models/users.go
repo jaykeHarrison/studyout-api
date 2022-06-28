@@ -1,4 +1,4 @@
-package users
+package models
 
 type Users struct {
 	//uint can store twice as many *positive* integers as int

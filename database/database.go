@@ -44,7 +44,7 @@ func ConnectDb() {
 	db.Logger = logger.Default.LogMode(logger.Info)
 	log.Println("Running migrations")
 	//Add migrations - these are tables using structs
-	db.AutoMigrate(&models.users{})
+	db.AutoMigrate(&models.Users{})
 	//instance of DbInstance struct; db is a gorm.db
 	Database = DbInstance{Db: db}
 }
