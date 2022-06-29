@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/jaykeHarrison/studyout-api/database"
+	"github.com/jaykeHarrison/studyout-api/routes"
 	"log"
 )
 
@@ -15,14 +16,17 @@ func welcome(c *fiber.Ctx) error {
 	return c.SendString("Welcome")
 }
 
+func setUpRoutes(app *fiber.App) {
+	app.Get("/api", welcome)
+	app.Get("/api/locations", routes.GetLocations)
+}
+
 func main() {
 	//connect to database
 	database.ConnectDb()
 	//initialise a Fiber app
 	app := fiber.New()
-
-	//define a route/endpoint with a handler function 'welcome'
-	app.Get("/api", welcome)
+	setUpRoutes(app)
 
 	//Listen on PORT 3000, log error if it occurs
 	log.Fatal(app.Listen(":3000"))
