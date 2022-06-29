@@ -2,7 +2,7 @@ package models
 
 type UserPreference struct {
 	UserRefer            int
-	Users                Users
+	Users                Users `gorm:"foreignKey:UserRefer"`
 	WiFi                 bool
 	WaterFountain        bool
 	PowerSockets         bool
