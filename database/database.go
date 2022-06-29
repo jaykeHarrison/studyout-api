@@ -10,6 +10,7 @@ import (
 	"gorm.io/gorm/logger"
 )
 
+//GORM DB instance
 type DbInstance struct {
 	Db *gorm.DB
 }
