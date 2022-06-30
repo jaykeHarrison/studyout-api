@@ -1,4 +1,5 @@
 package utils
+import "time"
 
 type Location struct {
 	LocationID   uint
@@ -10,4 +11,14 @@ type Location struct {
 	Condition    string
 	ImgUrl       string
 	CreatedBy    uint
+}
+
+type Review struct {
+	ReviewID     uint
+	UserRefer  uint
+	LocationRefer uint
+	CreatedAt	time.Time
+	VisitDate string
+	StarRating int
+	ReviewBody string
 }
