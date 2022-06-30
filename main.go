@@ -1,10 +1,11 @@
 package main
 
 import (
+	"log"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/jaykeHarrison/studyout-api/database"
 	"github.com/jaykeHarrison/studyout-api/routes"
-	"log"
 )
 
 //handler function that returns an error
@@ -19,7 +20,7 @@ func welcome(c *fiber.Ctx) error {
 func setUpRoutes(app *fiber.App) {
 	app.Get("/api", welcome)
 	app.Get("/api/locations", routes.GetLocations)
-	app.Get("/api/reviews" , routes.GetReviews)
+	app.Get("/api/reviews/:location_id" , routes.GetReviewsByLocationID)
 }
 
 func main() {
