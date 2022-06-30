@@ -9,6 +9,6 @@ type Location struct {
     Latitude     float32  `gorm:"not null; default:null"`
     Condition    string  `gorm:"not null; default:null"`
     ImgUrl       string  `gorm:"not null; default:null"`
-    CreatedBy    uint
+    CreatedBy    uint   `gorm:"not null; default:null"`
     Users        Users `gorm:"foreignKey:CreatedBy"`
 }
