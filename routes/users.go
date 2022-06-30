@@ -14,7 +14,9 @@ func PostUser(c *fiber.Ctx) error {
 		return c.Status(400).JSON(err.Error())
 	}
 
-	model.AddUser(&newUser)
+	if err := model.AddUser(&newUser); err != nil {
+		return c.Status(400).JSON(err.Error())
+	}
 
 	responseUser := utils.CreateResponseUser(newUser)
 
