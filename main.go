@@ -5,6 +5,7 @@ import (
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/jaykeHarrison/studyout-api/database"
+	"github.com/jaykeHarrison/studyout-api/database/seed"
 	"github.com/jaykeHarrison/studyout-api/routes"
 )
 
@@ -20,12 +21,10 @@ func welcome(c *fiber.Ctx) error {
 func setUpRoutes(app *fiber.App) {
 	app.Get("/api", welcome)
 	app.Get("/api/locations", routes.GetLocations)
-	app.Get("/api/reviews/:location_id" , routes.GetReviewsByLocationID)
+	app.Get("/api/reviews/:location_id", routes.GetReviewsByLocationID)
 	app.Post("/api/users", routes.PostUser)
-	app.Get("/api/reviews" , routes.GetReviews)
-	app.Post("/api/locations", routes.PostLocation)
-  }
-
+	// app.Get("/api/reviews", routes.GetReviews)
+}
 
 func main() {
 	//connect to database
@@ -33,7 +32,7 @@ func main() {
 	//initialise a Fiber app
 	app := fiber.New()
 	setUpRoutes(app)
-
+	seed.Seed()
 	//Listen on PORT 3000, log error if it occurs
 	log.Fatal(app.Listen(":3000"))
 }
