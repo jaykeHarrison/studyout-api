@@ -1,4 +1,5 @@
 package utils
+import "time"
 
 import "github.com/jaykeHarrison/studyout-api/models"
 
@@ -30,4 +31,14 @@ func CreateResponseUser(user models.Users) User {
 		LastName:  user.LastName,
 		Email:     user.Email,
 	}
+}
+
+type Review struct {
+	ReviewID     uint
+	UserRefer  uint
+	LocationRefer uint
+	CreatedAt	time.Time
+	VisitDate string
+	StarRating int
+	ReviewBody string
 }

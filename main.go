@@ -20,7 +20,8 @@ func setUpRoutes(app *fiber.App) {
 	app.Get("/api", welcome)
 	app.Get("/api/locations", routes.GetLocations)
 	app.Post("/api/users", routes.PostUser)
-}
+	app.Get("/api/reviews" , routes.GetReviews)
+  }
 
 func main() {
 	//connect to database
