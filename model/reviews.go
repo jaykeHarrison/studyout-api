@@ -5,6 +5,6 @@ import (
 	"github.com/jaykeHarrison/studyout-api/utils"
 )
 
-func FetchReviews(reviewSlice *[]utils.Review) {
-	database.Database.Db.Find(&reviewSlice)
+func FetchReviews(reviewSlice *[]utils.Review, location_refer string) {
+	database.Database.Db.Where("location_refer = ?", location_refer).Find(&reviewSlice)
 }
