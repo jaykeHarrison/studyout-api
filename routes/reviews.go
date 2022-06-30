@@ -15,5 +15,15 @@ func GetReviewsByLocationID(c *fiber.Ctx) error {
 
 	model.FetchReviews(&reviews, location_refer)
 
+	if err:= model.FetchReviews(&reviews, location_refer); err != nil {
+
+
+		return c.Status(400).SendString("400 : Bad request")
+	}
+
+	if len(reviews) == 0 {
+		return c.Status(404).SendString("404 : Not found")
+	}
+
 	return c.Status(200).JSON(reviews)
 }
