@@ -7,7 +7,7 @@ import (
 )
 
 type User struct {
-	ID        uint `gorm:"primaryKey"`
+	ID        uint 
 	Username  string
 	FirstName string
 	LastName  string
@@ -35,24 +35,36 @@ type Review struct {
 }
 
 type Location struct {
-	LocationID   uint    `gorm:"primaryKey"`
-	LocationName string  `gorm:"not null; default:null"`
-	Address      string  `gorm:"not null; default:null"`
-	Postcode     string  `gorm:"not null; default:null"`
-	Longitude    float32 `gorm:"not null; default:null"`
-	Latitude     float32 `gorm:"not null; default:null"`
-	Condition    string  `gorm:"not null; default:null"`
-	ImgUrl       string  `gorm:"not null; default:null"`
-	CreatedBy    uint    `gorm:"not null; default:null"`
-	Users        User    `gorm:"foreignKey:CreatedBy"`
+	LocationID   uint    
+	LocationName string  
+	Address      string 
+	Postcode     string  
+	Longitude    float32 
+	Latitude     float32 
+	Condition    string  
+	ImgUrl       string  
+	CreatedBy    uint    
+	Users        User   
 }
 
-func CreateResponseLocation(location models.Location) Location {
-	return Location{LocationID: location.LocationID, LocationName: location.LocationName, Address: location.Address, Postcode: location.Postcode, Longitude: location.Longitude, Latitude: location.Latitude, Condition: location.Condition, ImgUrl: location.ImgUrl, CreatedBy: location.CreatedBy}
+type LocationResponse struct {
+	LocationID   uint    
+	LocationName string  
+	Address      string 
+	Postcode     string  
+	Longitude    float32 
+	Latitude     float32 
+	Condition    string  
+	ImgUrl       string  
+	CreatedBy    uint    
+}
+
+func CreateResponseLocation(location models.Location) LocationResponse {
+	return LocationResponse{LocationID: location.LocationID, LocationName: location.LocationName, Address: location.Address, Postcode: location.Postcode, Longitude: location.Longitude, Latitude: location.Latitude, Condition: location.Condition, ImgUrl: location.ImgUrl, CreatedBy: location.CreatedBy}
 }
 type BookmarkResponse struct {
-	UserId  uint     `gorm: not null; default:null`
-	LocationId uint     `gorm: not null; default:null`
+	UserId  uint     
+	LocationId uint     
 }
 
 func CreateResponseBookmark(bookmark models.Bookmark) BookmarkResponse {
