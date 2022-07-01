@@ -17,8 +17,7 @@ func GetReviewsByLocationID(c *fiber.Ctx) error {
 
 	model.FetchReviews(&reviews, location_refer)
 
-	if err:= model.FetchReviews(&reviews, location_refer); err != nil {
-
+	if err := model.FetchReviews(&reviews, location_refer); err != nil {
 
 		return c.Status(400).SendString("400 : Bad request")
 	}
@@ -38,7 +37,6 @@ func PostReview(c *fiber.Ctx) error {
 	}
 
 	if err := model.AddReview(&newReview); err != nil {
-		fmt.Println("here", err)
 		return c.Status(400).JSON(err.Error())
 	}
 
