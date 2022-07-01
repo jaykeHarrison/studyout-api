@@ -3,6 +3,7 @@ package routes
 import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/jaykeHarrison/studyout-api/model"
+	"github.com/jaykeHarrison/studyout-api/models"
 	"github.com/jaykeHarrison/studyout-api/utils"
 )
 
@@ -26,4 +27,21 @@ func GetReviewsByLocationID(c *fiber.Ctx) error {
 	}
 
 	return c.Status(200).JSON(reviews)
+}
+
+func PostReview(c *fiber.Ctx) error {
+	var newReview models.Review
+
+	if err := c.BodyParser(&newReview); err != nil {
+		return c.Status(400).JSON(err.Error())
+	}
+
+	if err := model.AddReview(&newReview); err != nil {
+		fmt.Println("here", err)
+		return c.Status(400).JSON(err.Error())
+	}
+
+	responseReview := utils.CreateResponseReview(newReview)
+
+	return c.Status(201).JSON(responseReview)
 }
