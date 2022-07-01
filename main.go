@@ -26,6 +26,8 @@ func setUpRoutes(app *fiber.App) {
 	app.Post("/api/reviews", routes.PostReview)
 	app.Post("/api/locations", routes.PostLocation)
 	app.Post("/api/bookmarks", routes.PostBookmark)
+	app.Get("/api/users/:user_id", routes.GetUserById)
+}
 
 func main() {
 	//connect to database
