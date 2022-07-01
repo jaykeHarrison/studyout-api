@@ -2,7 +2,6 @@ package routes
 
 import (
 	"github.com/gofiber/fiber/v2"
-	"fmt"
 	"github.com/jaykeHarrison/studyout-api/model"
 	"github.com/jaykeHarrison/studyout-api/models"
 	"github.com/jaykeHarrison/studyout-api/utils"
