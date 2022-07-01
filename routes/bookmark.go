@@ -49,21 +49,7 @@ func GetBookmarks(c *fiber.Ctx) error {
 		return c.Status(404).JSON(err.Error())
 	}
 
-	// responseLocation := utils.CreateResponseLocation(fetchedLocation)
-
 	return c.Status(200).JSON(bookmarks)
 
-	// model.FetchBookmarks(&bookmarks,u)
-
-    // if err:= model.FetchBookmarks(&bookmarks,u); err != nil {
-
-	// 	return c.Status(400).SendString("400 : Bad request")
-	// }
-
-	// if len(bookmarks) == 0 {
-	// 	return c.Status(404).SendString("404 : Not found")
-	// }
-
-	// return c.Status(200).JSON(bookmarks)
 
 }
