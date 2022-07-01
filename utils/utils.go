@@ -79,6 +79,11 @@ type BookmarkResponse struct {
 	LocationId uint     
 }
 
+type Bookmark struct {
+	UserId  uint     
+	LocationId uint     
+}
+
 func CreateResponseBookmark(bookmark models.Bookmark) BookmarkResponse {
 	return BookmarkResponse{LocationId: bookmark.LocationId, UserId: bookmark.UserId}
 }
