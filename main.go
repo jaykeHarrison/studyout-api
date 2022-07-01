@@ -28,6 +28,7 @@ func setUpRoutes(app *fiber.App) {
 	app.Post("/api/bookmarks", routes.PostBookmark)
 	app.Get("/api/users/:user_id", routes.GetUserById)
 	app.Get("/api/locations/:location_id", routes.GetLocationById)
+	app.Delete("/api/locations/:location_id", routes.DeleteLocationById)
 }
 
 func main() {

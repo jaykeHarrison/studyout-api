@@ -58,3 +58,31 @@ func GetLocationById(c *fiber.Ctx) error {
 
 	return c.Status(200).JSON(responseLocation)
 }
+
+func DeleteLocationById(c *fiber.Ctx) error {
+	var deleteLocation models.Location
+
+	locationIdString := c.Params("location_id")
+
+	locationIdInt, _ := strconv.ParseInt(locationIdString, 10, 0)
+
+	if reflect.TypeOf(locationIdInt).String() != "int64" {
+		return c.Status(400).JSON("location_id must be an integer")
+	}
+
+	if locationIdInt < 1 {
+		return c.Status(400).JSON("invalid location_id")
+	}
+
+	if err := model.FetchLocationById(&deleteLocation, locationIdInt); err != nil {
+		return c.Status(404).JSON(err.Error())
+	}
+
+	if err := model.RemoveLocationById(&deleteLocation, locationIdInt); err != nil {
+		return c.Status(400).JSON(err.Error())
+	}
+
+	responseDeletedLocation := utils.CreateResponseLocation(deleteLocation)
+
+	return c.Status(200).JSON(responseDeletedLocation)
+}
