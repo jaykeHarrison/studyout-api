@@ -7,12 +7,12 @@ import (
 	"time"
 )
 
-func FetchReviews(reviewSlice *[]utils.Review, location_refer string) {
-	database.Database.Db.Where("location_refer = ?", location_refer).Find(&reviewSlice)
-}
-
 func AddReview(review *models.Review) error {
 	database.Database.Db.Create(review)
 
 	return database.Database.Db.Model(&review).Update("CreatedAt", time.Now()).Error
+}
+
+func FetchReviews(reviewSlice *[]utils.Review, location_refer string) error {
+  return database.Database.Db.Where("location_refer = ?", location_refer).Find(&reviewSlice).Error
 }
