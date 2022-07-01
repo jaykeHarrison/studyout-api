@@ -16,3 +16,7 @@ func AddLocation(location *models.Location) error {
 func FetchLocationById(location *models.Location, locationId int64) error {
 	return database.Database.Db.First(&location, locationId).Error
 }
+
+func RemoveLocationById(location *models.Location, locationId int64) error {
+	return database.Database.Db.Delete(&location, locationId).Error
+}
