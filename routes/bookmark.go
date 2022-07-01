@@ -30,8 +30,6 @@ func PostBookmark (c *fiber.Ctx) error {
 
 func GetBookmarks(c *fiber.Ctx) error {
 
-
-
 	bookmarks := []utils.Bookmark{}
 	userIdString := c.Params("user_id")
 
@@ -50,6 +48,5 @@ func GetBookmarks(c *fiber.Ctx) error {
 	}
 
 	return c.Status(200).JSON(bookmarks)
-
 
 }
