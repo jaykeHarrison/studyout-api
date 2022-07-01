@@ -11,6 +11,6 @@ func AddBookmark(bookmark *models.Bookmark) error {
 	return database.Database.Db.Create(&bookmark).Error
 }
 
-func FetchBookmarks(bookmarkSlice *[]utils.Bookmark, user uint64) error {
-	return database.Database.Db.Where("user = ?", user).Find(&bookmarkSlice).Error
+func FetchBookmarks(bookmarkSlice *[]utils.Bookmark, user_id uint64) error {
+	return database.Database.Db.Where("user_id = ?", user_id).Find(&bookmarkSlice).Error
 }
