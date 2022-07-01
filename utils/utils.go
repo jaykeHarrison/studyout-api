@@ -47,7 +47,7 @@ func CreateResponseReview(review models.Review) Review {
 }
 
 type Location struct {
-	LocationID   uint    
+	LocationID   uint    `gorm:"primaryKey"`
 	LocationName string  
 	Address      string 
 	Postcode     string  
@@ -75,6 +75,11 @@ func CreateResponseLocation(location models.Location) LocationResponse {
 	return LocationResponse{LocationID: location.LocationID, LocationName: location.LocationName, Address: location.Address, Postcode: location.Postcode, Longitude: location.Longitude, Latitude: location.Latitude, Condition: location.Condition, ImgUrl: location.ImgUrl, CreatedBy: location.CreatedBy}
 }
 type BookmarkResponse struct {
+	UserId  uint     
+	LocationId uint     
+}
+
+type Bookmark struct {
 	UserId  uint     
 	LocationId uint     
 }

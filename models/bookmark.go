@@ -6,3 +6,4 @@ type Bookmark struct {
 	LocationId uint     `gorm: not null; default:null`
 	Location   Location `gorm:"foreignKey:LocationId"`
 }
+

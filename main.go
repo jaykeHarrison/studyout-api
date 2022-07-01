@@ -22,14 +22,16 @@ func setUpRoutes(app *fiber.App) {
 	app.Get("/api", welcome)
 	app.Get("/api/locations", routes.GetLocations)
 	app.Get("/api/reviews/:location_id", routes.GetReviewsByLocationID)
+	app.Get("/api/bookmarks/:user_id", routes.GetBookmarks)
+  app.Get("/api/users/:user_id", routes.GetUserById)
+	app.Get("/api/locations/:location_id", routes.GetLocationById)
 	app.Post("/api/users", routes.PostUser)
 	app.Post("/api/reviews", routes.PostReview)
 	app.Post("/api/locations", routes.PostLocation)
 	app.Post("/api/bookmarks", routes.PostBookmark)
-	app.Get("/api/users/:user_id", routes.GetUserById)
-	app.Get("/api/locations/:location_id", routes.GetLocationById)
 	app.Delete("/api/locations/:location_id", routes.DeleteLocationById)
 }
+
 
 func main() {
 	//connect to database

@@ -11,7 +11,7 @@ import (
 
 func GetLocations(c *fiber.Ctx) error {
 	//create empty slice whose elements are Location models
-	locations := []utils.Location{}
+	locations := []models.Location{}
 
 	model.FetchLocations(&locations)
 
