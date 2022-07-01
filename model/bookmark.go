@@ -10,3 +10,6 @@ func AddBookmark(bookmark *models.Bookmark) error {
 	return database.Database.Db.Create(&bookmark).Error
 }
 
+func FetchBookmarks(bookmarkSlice *[]models.Bookmark) {
+	database.Database.Db.Find(&bookmarkSlice)
+}

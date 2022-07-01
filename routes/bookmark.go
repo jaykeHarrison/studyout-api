@@ -1,9 +1,11 @@
 package routes
 
 import (
+	"fmt"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/jaykeHarrison/studyout-api/model"
-    "github.com/jaykeHarrison/studyout-api/models"
+	"github.com/jaykeHarrison/studyout-api/models"
 	"github.com/jaykeHarrison/studyout-api/utils"
 )
 
@@ -22,5 +24,18 @@ func PostBookmark (c *fiber.Ctx) error {
     responseBookmark := utils.CreateResponseBookmark(bookmark)
     
     return c.Status(200).JSON(responseBookmark)
+
+}
+
+
+func GetBookmarks(c *fiber.Ctx) error {
+
+	bookmarks := []models.Bookmark{}
+
+	model.FetchBookmarks(&bookmarks)
+
+    responseBookmark := utils.CreateResponseBookmark(bookmarks)
+
+	return c.Status(200).JSON(responseBookmark)
 
 }

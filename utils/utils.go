@@ -47,7 +47,7 @@ func CreateResponseReview(review models.Review) Review {
 }
 
 type Location struct {
-	LocationID   uint    
+	LocationID   uint    `gorm:"primaryKey"`
 	LocationName string  
 	Address      string 
 	Postcode     string  
