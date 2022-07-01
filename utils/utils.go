@@ -25,13 +25,25 @@ func CreateResponseUser(user models.Users) User {
 }
 
 type Review struct {
-	ReviewID      uint
+	ReviewId      uint
 	UserRefer     uint
 	LocationRefer uint
 	CreatedAt     time.Time
 	VisitDate     string
 	StarRating    int
 	ReviewBody    string
+}
+
+func CreateResponseReview(review models.Review) Review {
+	return Review{
+		ReviewId:      review.ReviewId,
+		UserRefer:     review.UserRefer,
+		LocationRefer: review.LocationRefer,
+		CreatedAt:     review.CreatedAt,
+		VisitDate:     review.VisitDate,
+		StarRating:    review.StarRating,
+		ReviewBody:    review.ReviewBody,
+	}
 }
 
 type Location struct {
