@@ -50,3 +50,11 @@ type Location struct {
 func CreateResponseLocation(location models.Location) Location {
 	return Location{LocationID: location.LocationID, LocationName: location.LocationName, Address: location.Address, Postcode: location.Postcode, Longitude: location.Longitude, Latitude: location.Latitude, Condition: location.Condition, ImgUrl: location.ImgUrl, CreatedBy: location.CreatedBy}
 }
+type BookmarkResponse struct {
+	UserId  uint     `gorm: not null; default:null`
+	LocationId uint     `gorm: not null; default:null`
+}
+
+func CreateResponseBookmark(bookmark models.Bookmark) BookmarkResponse {
+	return BookmarkResponse{LocationId: bookmark.LocationId, UserId: bookmark.UserId}
+}
