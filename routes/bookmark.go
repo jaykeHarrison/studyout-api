@@ -70,9 +70,7 @@ func DeleteBookmark(c *fiber.Ctx)error{
 		return c.Status(400).JSON("invalid Location Id")
 	}
 	
-	responseDeletedBookmark := utils.CreateResponseBookmark(bookmark)
-
-	return c.Status(200).JSON(responseDeletedBookmark)
+	return c.Status(200).SendString("Bookmark has been deleted")
 
 
 	
