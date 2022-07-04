@@ -31,6 +31,7 @@ func setUpRoutes(app *fiber.App) {
 	app.Post("/api/bookmarks", routes.PostBookmark)
 	app.Delete("/api/locations/:location_id", routes.DeleteLocationById)
 	app.Delete("/api/bookmarks", routes.DeleteBookmark)
+	app.Delete("/api/users/:user_id", routes.DeleteUserById)
 }
 
 
