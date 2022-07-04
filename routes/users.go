@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"fmt"
 	"github.com/gofiber/fiber/v2"
 	"github.com/jaykeHarrison/studyout-api/model"
 	"github.com/jaykeHarrison/studyout-api/models"
@@ -47,4 +48,34 @@ func GetUserById(c *fiber.Ctx) error {
 	responseUser := utils.CreateResponseUser(fetchedUser)
 
 	return c.Status(200).JSON(responseUser)
+}
+
+func DeleteUserById(c *fiber.Ctx) error {
+	var deleteUser models.Users
+
+	UserIdString := c.Params("user_id")
+
+	UserIdInt, _ := strconv.ParseInt(UserIdString, 10, 0)
+
+	fmt.Println(UserIdInt)
+
+	if reflect.TypeOf(UserIdInt).String() != "int64" {
+		return c.Status(400).JSON("User_id must be an integer")
+	}
+
+	if UserIdInt < 1 {
+		return c.Status(400).JSON("invalid User_id")
+	}
+
+	if err := model.FetchUserById(&deleteUser, UserIdInt); err != nil {
+		return c.Status(404).JSON(err.Error())
+	}
+
+	if err := model.RemoveUserById(&deleteUser, UserIdInt); err != nil {
+		return c.Status(400).JSON(err.Error())
+	}
+
+	responseDeletedUser := utils.CreateResponseUser(deleteUser)
+
+	return c.Status(200).JSON(responseDeletedUser)
 }

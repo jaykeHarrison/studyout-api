@@ -13,3 +13,7 @@ func AddUser(user *models.Users) error {
 func FetchUserById(user *models.Users, userId int64) error {
 	return database.Database.Db.First(&user, userId).Error
 }
+
+func RemoveUserById(User *models.Users, UserId int64) error {
+	return database.Database.Db.Delete(&User, UserId).Error
+}
