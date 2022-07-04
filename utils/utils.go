@@ -80,8 +80,8 @@ type BookmarkResponse struct {
 }
 
 type Bookmark struct {
-	UserId  uint     
-	LocationId uint     
+	UserId  uint64     
+	LocationId uint64     
 }
 
 func CreateResponseBookmark(bookmark models.Bookmark) BookmarkResponse {
