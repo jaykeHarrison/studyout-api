@@ -1,12 +1,13 @@
 package routes
 
 import (
+	"reflect"
+	"strconv"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/jaykeHarrison/studyout-api/model"
 	"github.com/jaykeHarrison/studyout-api/models"
 	"github.com/jaykeHarrison/studyout-api/utils"
-	"strconv"
-	"reflect"
 )
 
 func PostBookmark (c *fiber.Ctx) error {
@@ -48,5 +49,30 @@ func GetBookmarks(c *fiber.Ctx) error {
 	}
 
 	return c.Status(200).JSON(bookmarks)
+
+}
+
+
+func DeleteBookmark(c *fiber.Ctx)error{
+	var bookmark models.Bookmark
+	
+	if err := c.BodyParser(&bookmark); err != nil {
+        return c.Status(400).JSON(err.Error())
+    }
+	
+	if err := model.RemoveBookmark(&bookmark); err !=nil {
+		return c.Status(400).JSON(err.Error())
+	}
+	if bookmark.UserId < 1 {
+		return c.Status(400).JSON("invalid user_id")
+	}
+	if bookmark.LocationId < 1 {
+		return c.Status(400).JSON("invalid Location Id")
+	}
+	
+	return c.Status(200).SendString("Bookmark has been deleted")
+
+
+	
 
 }
