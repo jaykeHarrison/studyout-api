@@ -7,7 +7,7 @@ import (
 )
 
 type User struct {
-	ID        uint 
+	ID        uint
 	Username  string
 	FirstName string
 	LastName  string
@@ -47,41 +47,42 @@ func CreateResponseReview(review models.Review) Review {
 }
 
 type Location struct {
-	LocationID   uint    `gorm:"primaryKey"`
-	LocationName string  
-	Address      string 
-	Postcode     string  
-	Longitude    float32 
-	Latitude     float32 
-	Condition    string  
-	ImgUrl       string  
-	CreatedBy    uint    
-	Users        User   
+	LocationID   uint `gorm:"primaryKey"`
+	LocationName string
+	Address      string
+	Postcode     string
+	Longitude    float32
+	Latitude     float32
+	Condition    string
+	ImgUrl       string
+	CreatedBy    uint
+	Users        User
 }
 
 type LocationResponse struct {
-	LocationID   uint    
-	LocationName string  
-	Address      string 
-	Postcode     string  
-	Longitude    float32 
-	Latitude     float32 
-	Condition    string  
-	ImgUrl       string  
-	CreatedBy    uint    
+	LocationID   uint
+	LocationName string
+	Address      string
+	Postcode     string
+	Longitude    float32
+	Latitude     float32
+	Condition    string
+	ImgUrl       string
+	CreatedBy    string
 }
 
 func CreateResponseLocation(location models.Location) LocationResponse {
-	return LocationResponse{LocationID: location.LocationID, LocationName: location.LocationName, Address: location.Address, Postcode: location.Postcode, Longitude: location.Longitude, Latitude: location.Latitude, Condition: location.Condition, ImgUrl: location.ImgUrl, CreatedBy: location.CreatedBy}
+	return LocationResponse{LocationID: location.LocationID, LocationName: location.LocationName, Address: location.Address, Postcode: location.Postcode, Longitude: location.Longitude, Latitude: location.Latitude, Condition: location.Condition, ImgUrl: location.ImgUrl, CreatedBy: location.Users.Username}
 }
+
 type BookmarkResponse struct {
-	UserId  uint     
-	LocationId uint     
+	UserId     uint
+	LocationId uint
 }
 
 type Bookmark struct {
-	UserId  uint64     
-	LocationId uint64     
+	UserId     uint64
+	LocationId uint64
 }
 
 func CreateResponseBookmark(bookmark models.Bookmark) BookmarkResponse {
