@@ -68,11 +68,11 @@ type LocationResponse struct {
 	Latitude     float32
 	Condition    string
 	ImgUrl       string
-	CreatedBy    uint
+	CreatedBy    string
 }
 
 func CreateResponseLocation(location models.Location) LocationResponse {
-	return LocationResponse{LocationID: location.LocationID, LocationName: location.LocationName, Address: location.Address, Postcode: location.Postcode, Longitude: location.Longitude, Latitude: location.Latitude, Condition: location.Condition, ImgUrl: location.ImgUrl, CreatedBy: location.CreatedBy}
+	return LocationResponse{LocationID: location.LocationID, LocationName: location.LocationName, Address: location.Address, Postcode: location.Postcode, Longitude: location.Longitude, Latitude: location.Latitude, Condition: location.Condition, ImgUrl: location.ImgUrl, CreatedBy: location.Users.Username}
 }
 
 type BookmarkResponse struct {
