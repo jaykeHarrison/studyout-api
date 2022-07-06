@@ -28,7 +28,7 @@ func ConnectDb() {
 		# SELECT * FROM pg_settings WHERE name = 'port'
 		if this is not 5432, change the port for dsn
 	*/
-	dsn := "host=postgres://whukezqqivadin:f1810aa7bc247490000ba184427d7ffcb25e372e18cce181546d542d22b0e9c5@ec2-3-248-121-12.eu-west-1.compute.amazonaws.com:5432/d27jvfvqp86ufd dbname=d27jvfvqp86ufd port=5432 user=whukezqqivadin password=f1810aa7bc247490000ba184427d7ffcb25e372e18cce181546d542d22b0e9c5"
+	dsn := "dbURL=postgres://whukezqqivadin:f1810aa7bc247490000ba184427d7ffcb25e372e18cce181546d542d22b0e9c5@ec2-3-248-121-12.eu-west-1.compute.amazonaws.com:5432/d27jvfvqp86ufd dbname=d27jvfvqp86ufd port=5432 user=whukezqqivadin password=f1810aa7bc247490000ba184427d7ffcb25e372e18cce181546d542d22b0e9c5"
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 
 	//if there is an error connecting to db, this will throw the error
