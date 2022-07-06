@@ -40,11 +40,14 @@ func PostLocation(c *fiber.Ctx) error {
 		return c.Status(400).JSON(err.Error())
 	}
 
-	return c.Status(204).JSON("success")
+	responseLocation := utils.CreateResponseLocation(location, features)
+
+	return c.Status(200).JSON(responseLocation)
 }
 
 func GetLocationById(c *fiber.Ctx) error {
 	var fetchedLocation models.Location
+	var fetchedLocationFeatures models.LocationFeature
 
 	locationIdString := c.Params("location_id")
 
@@ -62,7 +65,11 @@ func GetLocationById(c *fiber.Ctx) error {
 		return c.Status(404).JSON(err.Error())
 	}
 
-	responseLocation := utils.CreateResponseLocation(fetchedLocation)
+	if err := model.FetchFeaturesByLocationId(&fetchedLocationFeatures, locationIdInt); err != nil {
+		return c.Status(404).JSON(err.Error())
+	}
+
+	responseLocation := utils.CreateResponseLocation(fetchedLocation, fetchedLocationFeatures)
 
 	return c.Status(200).JSON(responseLocation)
 }
@@ -90,7 +97,5 @@ func DeleteLocationById(c *fiber.Ctx) error {
 		return c.Status(400).JSON(err.Error())
 	}
 
-	responseDeletedLocation := utils.CreateResponseLocation(deleteLocation)
-
-	return c.Status(200).JSON(responseDeletedLocation)
+	return c.Status(204).JSON("success")
 }
