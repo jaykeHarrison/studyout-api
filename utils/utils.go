@@ -88,3 +88,8 @@ type Bookmark struct {
 func CreateResponseBookmark(bookmark models.Bookmark) BookmarkResponse {
 	return BookmarkResponse{LocationId: bookmark.LocationId, UserId: bookmark.UserId}
 }
+
+type LocationPost struct {
+	Location        models.Location
+	LocationFeature models.LocationFeature
+}

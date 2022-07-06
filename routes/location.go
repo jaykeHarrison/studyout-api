@@ -19,20 +19,28 @@ func GetLocations(c *fiber.Ctx) error {
 }
 
 func PostLocation(c *fiber.Ctx) error {
+	var locationPost utils.LocationPost
 	var location models.Location
+	var features models.LocationFeature
 
-	if err := c.BodyParser(&location); err != nil {
+	if err := c.BodyParser(&locationPost); err != nil {
 		return c.Status(400).JSON(err.Error())
 	}
+
+	location = locationPost.Location
+	features = locationPost.LocationFeature
 
 	if err := model.AddLocation(&location); err != nil {
 		return c.Status(400).JSON(err.Error())
 	}
 
-	responseLocation := utils.CreateResponseLocation(location)
+	features.LocationId = location.LocationID
 
-	return c.Status(200).JSON(responseLocation)
+	if err := model.AddLocationFeatures(&features); err != nil {
+		return c.Status(400).JSON(err.Error())
+	}
 
+	return c.Status(204).JSON("success")
 }
 
 func GetLocationById(c *fiber.Ctx) error {

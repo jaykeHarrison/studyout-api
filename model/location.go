@@ -13,6 +13,10 @@ func AddLocation(location *models.Location) error {
 	return database.Database.Db.Create(&location).Error
 }
 
+func AddLocationFeatures(locationFeature *models.LocationFeature) error {
+	return database.Database.Db.Create(&locationFeature).Error
+}
+
 func FetchLocationById(location *models.Location, locationId int64) error {
 	return database.Database.Db.Joins("Users").First(&location, locationId).Error
 }
