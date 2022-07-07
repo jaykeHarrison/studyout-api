@@ -7,11 +7,11 @@ import (
 
 func Seed() {
 	Users := []models.Users{
-		{1, "JaykeHarrison", "Jayke", "Harrison", "jayke@jaykeharrison.com"},
-		{2, "GarySum", "Gary", "Sum", "Gary@Gary.com"},
-		{3, "JamesYeung", "James", "Yeung", "James@James.com"},
-		{4, "CaolanHamilton", "Caolan", "Hamilton", "Caolan@Caolan.com"},
-		{5, "NikhilMathew", "Nikhil", "Mathew", "Nikhil@Nikhil.com"},
+		{101, "JaykeHarrison", "Jayke", "Harrison", "jayke@jaykeharrison.com"},
+		{102, "GarySum", "Gary", "Sum", "Gary@Gary.com"},
+		{103, "JamesYeung", "James", "Yeung", "James@James.com"},
+		{104, "CaolanHamilton", "Caolan", "Hamilton", "Caolan@Caolan.com"},
+		{105, "NikhilMathew", "Nikhil", "Mathew", "Nikhil@Nikhil.com"},
 	}
 	Locations := []models.Location{
 		{
@@ -22,7 +22,7 @@ func Seed() {
 			Latitude:     53.482570,
 			Condition:    "Buy a coffee at least every 3 hours",
 			ImgUrl:       "https://tinyurl.com/42sdhvyd",
-			CreatedBy:    1,
+			CreatedBy:    101,
 		},
 		{
 			LocationName: "Federal Cafe Bar",
@@ -32,7 +32,7 @@ func Seed() {
 			Latitude:     53.478660,
 			Condition:    "unlimited stay with any purchase",
 			ImgUrl:       "https://tinyurl.com/42sdhvyd",
-			CreatedBy:    2,
+			CreatedBy:    102,
 		},
 		{
 			LocationName: "Ezra & Gil",
@@ -42,7 +42,7 @@ func Seed() {
 			Latitude:     53.482025,
 			Condition:    "Can stay upto 4 hours with a purchase",
 			ImgUrl:       "https://tinyurl.com/42sdhvyd",
-			CreatedBy:    3,
+			CreatedBy:    103,
 		},
 	}
 
