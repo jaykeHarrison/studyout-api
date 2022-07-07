@@ -21,7 +21,7 @@ func Seed() {
 			Longitude:    -2.233770,
 			Latitude:     53.482570,
 			Condition:    "Buy a coffee at least every 3 hours",
-			ImgUrl:       "https://tinyurl.com/42sdhvyd",
+			ImgUrl:       "https://lh5.googleusercontent.com/p/AF1QipOhA2NjWlEJCnVKkihlRPeZ3QHgf7IOTWwiApP6=w408-h422-k-no",
 			CreatedBy:    101,
 		},
 		{
@@ -31,7 +31,7 @@ func Seed() {
 			Longitude:    -2.249450,
 			Latitude:     53.478660,
 			Condition:    "unlimited stay with any purchase",
-			ImgUrl:       "https://tinyurl.com/42sdhvyd",
+			ImgUrl:       "https://lh5.googleusercontent.com/p/AF1QipO4ZJR_P3754dsEleBykHZM0lMcjQXSOCmkllHN=w408-h306-k-no",
 			CreatedBy:    102,
 		},
 		{
@@ -41,7 +41,7 @@ func Seed() {
 			Longitude:    -2.232888,
 			Latitude:     53.482025,
 			Condition:    "Can stay upto 4 hours with a purchase",
-			ImgUrl:       "https://tinyurl.com/42sdhvyd",
+			ImgUrl:       "https://lh5.googleusercontent.com/p/AF1QipMA_IVX4WJmGH6wa9-SKI_zMYUf6aEGvt75ZESw=w426-h240-k-no",
 			CreatedBy:    105,
 		},
 		{
