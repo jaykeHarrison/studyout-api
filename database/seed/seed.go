@@ -732,6 +732,25 @@ func Seed() {
 		},
 	}
 
+	Bookmarks := []models.Bookmark{
+		{
+			UserId:     101,
+			LocationId: 3,
+		},
+		{
+			UserId:     101,
+			LocationId: 7,
+		},
+		{
+			UserId:     101,
+			LocationId: 9,
+		},
+		{
+			UserId:     101,
+			LocationId: 10,
+		},
+	}
+
 	for _, user := range Users {
 		model.AddUser(&user)
 	}
@@ -742,5 +761,9 @@ func Seed() {
 
 	for _, location := range LocationFeatures {
 		model.AddLocationFeatures(&location)
+	}
+
+	for _, bookmark := range Bookmarks {
+		model.AddBookmark(&bookmark)
 	}
 }
